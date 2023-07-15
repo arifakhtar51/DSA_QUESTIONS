@@ -1,0 +1,49 @@
+#include <iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int Square_Root(int n){
+  int s=0;
+  int e=n;
+  int ans;
+  int mid=s+(e-s)/2;
+  while(s<=e){
+    if(mid*mid==n){
+      return mid;
+      
+    }
+    if(mid*mid>n){
+      e=mid-1;
+    }
+    else{
+      s=mid+1;
+      ans=mid;
+      
+    }
+    mid=s+(e-s)/2;
+  }
+  return ans;
+}
+ 
+int main() {
+  //vector<int>nums={4,5,6,7,1,2};
+ int n=34;
+  int ans=Square_Root(n);
+  cout<< ans<<endl;
+  int precision=6;
+  double div=0.1;
+  double new_ans=ans;
+  for(int i=0;i<precision;i++){
+    for(double j=new_ans;j*j<n;j=j+div){
+      new_ans=j;
+    }
+    div=div/10;
+    
+  }
+  cout<<new_ans;
+  
+  
+  
+  
+    return 0;
+}

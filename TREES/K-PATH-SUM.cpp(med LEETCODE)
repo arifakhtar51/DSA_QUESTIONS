@@ -1,0 +1,25 @@
+class Solution {
+public:
+int cnt=0;
+void solve(TreeNode* root,long target){
+    //base case
+    if(!root)return ;
+    if(target==root->val){
+        cnt++;
+    }
+    solve(root->left,target-root->val);
+    solve(root->right,target-root->val);
+    
+}
+    int pathSum(TreeNode* root, long targetSum) {
+        if(root){
+            solve(root,targetSum);
+            pathSum(root->left,targetSum);
+            pathSum(root->right,targetSum);
+
+        }
+        return cnt;
+        
+        return cnt;
+    }
+};

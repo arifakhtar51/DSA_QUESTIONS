@@ -1,0 +1,19 @@
+int n=6;
+for(int i=1;i<=n;i++){
+    int j=1;
+    for(;j<=i;j++){
+        cout<<char(j+64)<<" ";
+    } 
+    j=j-2;
+    for(j;j>0;j--){
+       cout<<char(j+64)<<" ";
+    }
+
+    cout<<endl;
+}
+A 
+A B A
+A B C B A
+A B C D C B A
+A B C D E D C B A 
+A B C D E F E D C B A

@@ -1,0 +1,41 @@
+class Solution {
+public:
+    vector<int> nextLargerNodes(ListNode* head) {
+         vector<int> ans;
+        //step 1 reverse LL
+        if(head==0 || head->next==0){ans.push_back(0);return ans ;}
+        ListNode * temp=NULL;
+        ListNode* curr=head;
+        ListNode * next=curr->next;
+
+        while(curr!=0){
+            curr->next=temp;
+            temp=curr;
+            curr=next;
+            if(next!=NULL)
+            next=next->next;
+        }//DONE
+       
+        //step 2 initialise a vector ans
+        int mx=0;
+        stack<int>st;
+        st.push(0);
+        while(temp!=NULL){
+            int num=temp->val;
+            while(!st.empty() && num>=st.top()){
+                    st.pop();
+            }
+            if(!st.empty() && st.top()>num){
+                ans.push_back(st.top());
+            }
+            else{
+                ans.push_back(0);
+            }
+            st.push(num);
+            temp=temp->next;
+        }
+    reverse(ans.begin(),ans.end());
+    return ans;
+        //step 3 reverse the  array
+    }
+};
